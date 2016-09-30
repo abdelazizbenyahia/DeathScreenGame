@@ -11,5 +11,7 @@ This is a typing game built on the dragonfly game engine.
 Try to destroy all the errors and collect the highest point!!!
 
 Good luck
+
+
 ![yotsuba](http://i447.photobucket.com/albums/qq193/isaubella/index.gif)
 
