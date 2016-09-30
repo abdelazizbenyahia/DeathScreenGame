@@ -18,7 +18,6 @@ private:
     WorldManager(WorldManager const&);   ///< Don't allow copy.
     void operator=(WorldManager const&); ///< Don't allow assignment.
     ObjectList deletions;                ///< List of all Objects to delete.
-    ObjectList updates;                  ///< List of all Objects to updates
 	Box boundary; /// World boundary.
 	Box view; /// Player view of game world.
 	Object* p_object_following; ///object the view is following

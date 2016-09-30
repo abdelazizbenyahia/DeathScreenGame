@@ -20,6 +20,8 @@ Box getWorldBox(const Object *p_o);
 Box getWorldBox(const Object *p_o, Vector where);// Convert world position to view position.
 ///convert world position to view position
 Vector worldToView(Vector world_pos);
+///convert view position to world position
+Vector viewToWorld(Vector view_pos);
 ///turn int to string
 std::string intToString(int number);
 
