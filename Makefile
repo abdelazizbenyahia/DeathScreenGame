@@ -18,21 +18,10 @@ CC= g++
 
 # 1) Uncomment below for Mac (64-bit)
 LINKLIB= -ldragonfly -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
-LINKDIR= -L../gameengine/ -L/usr/local/lib # path to dragonfly library
-INCDIR= -I../gameengine/ -I/usr/local/include # path to dragonfly includes
+LINKDIR= -L./engine/ -L/usr/local/lib # path to dragonfly library
+INCDIR= -I./include/ -I/usr/local/include # path to dragonfly includes
 
-GAMESRC= \
-         Bullet.cpp \
-         EventNuke.cpp \
-         Explosion.cpp \
-         GameOver.cpp \
-         GameStart.cpp \
-         Hero.cpp \
-         Points.cpp \
-         Reticle.cpp \
-         Saucer.cpp \
-         Star.cpp \
-
+GAMESRC= 
 GAME= game.cpp
 EXECUTABLE= game
 OBJECTS= $(GAMESRC:.cpp=.o)

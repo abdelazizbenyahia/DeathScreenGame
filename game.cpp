@@ -9,7 +9,6 @@
 #include "ResourceManager.h"
  
 // Game includes.
-#include "GameStart.h"
 
 // Function prototypes.
 void loadResources(void);
