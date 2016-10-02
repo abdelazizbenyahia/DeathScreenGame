@@ -21,7 +21,7 @@ LINKLIB= -ldragonfly -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 LINKDIR= -L./engine/ -L/usr/local/lib # path to dragonfly library
 INCDIR= -I./include/ -I/usr/local/include # path to dragonfly includes
 
-GAMESRC= 
+GAMESRC=Hero.cpp Explosion.cpp 
 GAME= game.cpp
 EXECUTABLE= game
 OBJECTS= $(GAMESRC:.cpp=.o)
