@@ -46,7 +46,7 @@ Hero::Hero()
 
     // Set starting location.
     df::WorldManager& world_manager = df::WorldManager::getInstance();
-    df::Vector p(7, world_manager.getBoundary().getVertical() / 2);
+    df::Vector p(world_manager.getBoundary().getHorizontal() / 2, world_manager.getBoundary().getVertical() - 7);
     setPos(p);
     if(world_manager.setViewFollowing(this) == -1) {
 	log_manager.writeLog("cannot");

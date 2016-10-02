@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
 void loadResources(void)
 {
     df::ResourceManager& resource_manager = df::ResourceManager::getInstance();
-	
+	resource_manager.loadSprite("sprites/explosion-spr.txt", "explosion")
 }
 
 // Populate world with some objects.
