@@ -9,7 +9,7 @@
 #include "ResourceManager.h"
 
 // Game includes.
-
+#include "ErrorsObjectList.h"
 // Function prototypes.
 void loadResources(void);
 void populateWorld(void);
@@ -46,11 +46,11 @@ int main(int argc, char* argv[])
 void loadResources(void)
 {
     df::ResourceManager& resource_manager = df::ResourceManager::getInstance();
-	resource_manager.loadSprite("sprites/explosion-spr.txt", "explosion")
+	resource_manager.loadSprite("sprites/explosion-spr.txt", "explosion");
 }
 
 // Populate world with some objects.
 void populateWorld(void)
 {
-	
+	new ErrorsObjectList;
 }

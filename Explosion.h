@@ -1,7 +1,7 @@
 //
 // Explosion.h
 //
-
+#pragma once
 #include "Object.h"
 
 class Explosion : public df::Object

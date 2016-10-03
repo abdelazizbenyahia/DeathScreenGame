@@ -1,7 +1,7 @@
 //
 // Hero.h
 //
-
+#pragma once
 #include "EventKeyboard.h"
 #include "Object.h"
 
