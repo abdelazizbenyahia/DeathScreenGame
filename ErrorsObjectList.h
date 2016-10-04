@@ -23,6 +23,7 @@ private:
 	std::vector<std::string> contents;
 	void loadContents();
 	
+	
 public:
 	ErrorsObjectList();
 	~ErrorsObjectList();

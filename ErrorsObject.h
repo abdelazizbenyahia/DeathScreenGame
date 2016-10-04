@@ -11,19 +11,22 @@ class ErrorsObject: public df::Object
 {
 private:
 	//content of errors object
-	std::string content;
+	std::string content[3];
 	///manager object
 	ErrorsObjectList * list;
 	///difficulty of errors object
 	int hardness;
 	///color of this
-	df::Color color;
+	df::Color color[3];
 	///load content from file
 	void loadContent();
 	///update boundary
 	void updateBox();
 	///max numbers of errors objects variation
 	int max_number;
+	bool shift;
+	///spawn the object
+	void moveToStart();
 public:
 	ErrorsObject(ErrorsObjectList *n_list, int max_num);
 	~ErrorsObject();
@@ -32,9 +35,7 @@ public:
 	///remove the letter in the content
 	int removeLetter(char c);
 	///get Color
-	df::Color getColor();
-	///set Color
-	void setColor(df::Color n_c);
+	df::Color getColor(int c);
 	///get hardness
 	int getHardness();
 	///set hardness

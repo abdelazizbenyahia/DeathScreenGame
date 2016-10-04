@@ -1,3 +1,4 @@
+#include "Music.h"
 #include "ErrorsObjectList.h"
 #include "EventStep.h"
 #include "EventKeyboard.h"
@@ -9,7 +10,7 @@ char dfKeyboardToChar(df::Keyboard::Key k);
 
 ErrorsObjectList::ErrorsObjectList()
 {
-    highest_gap = 30;
+    highest_gap = 120;
     accelerate = 1;
     reduction = 0;
     max_height = LOWEST_HEIGHT;
@@ -17,10 +18,18 @@ ErrorsObjectList::ErrorsObjectList()
     registerInterest(df::KEYBOARD_EVENT);
     setSolidness(df::SPECTRAL);
 	loadContents();
+	df::ResourceManager& resource = df::ResourceManager::getInstance();
+	df::Music * m = resource.getMusic("spectre");
+	if (m!=NULL) m->play();
+	
 }
 
 ErrorsObjectList::~ErrorsObjectList()
 {
+	df::ResourceManager& resource = df::ResourceManager::getInstance();
+	df::Music * m = resource.getMusic("spectre");
+	if (m != NULL)m->stop();
+
 }
 
 int ErrorsObjectList::eventHandler(const df::Event* p_event)
@@ -202,6 +211,10 @@ char dfKeyboardToChar(df::Keyboard::Key k)
 	return 'y';
     case df::Keyboard::Key::Z:
 	return 'z';
+	case df::Keyboard::Key::SPACE:
+	return ' ';
+	case df::Keyboard::Key::QUOTE:
+	return '\'';
     default:
 	return 0;
     }

@@ -7,7 +7,7 @@
 #include "LogManager.h"
 #include "Pause.h"
 #include "ResourceManager.h"
-
+#include "ViewObject.h"
 // Game includes.
 #include "ErrorsObjectList.h"
 // Function prototypes.
@@ -47,10 +47,19 @@ void loadResources(void)
 {
     df::ResourceManager& resource_manager = df::ResourceManager::getInstance();
 	resource_manager.loadSprite("sprites/explosion-spr.txt", "explosion");
+	resource_manager.loadSound("sounds/errors-sound.wav", "errors");
+	resource_manager.loadSound("sounds/fire.wav", "fire");
+	//normal theme
+	resource_manager.loadMusic("sounds/spectre.wav", "spectre");
+	//extreme theme
+	//resource_manager.loadMusic("sounds/Miiro.mp3", "miiro");
 }
 
 // Populate world with some objects.
 void populateWorld(void)
 {
 	new ErrorsObjectList;
+	df::ViewObject * v_o = new df::ViewObject();
+	v_o->setViewString("Points");
+	v_o->setValue(0);
 }

@@ -38,8 +38,7 @@ Hero::Hero()
     registerInterest(df::KEYBOARD_EVENT);
     registerInterest(df::MOUSE_EVENT);
 
-    // Need to update rate control each step.
-    registerInterest(df::STEP_EVENT);
+    
 
     // Set object type.
     setType("Hero");
