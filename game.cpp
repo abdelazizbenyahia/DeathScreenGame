@@ -22,6 +22,7 @@ int main(int argc, char* argv[])
     df::GameManager& game_manager = df::GameManager::getInstance();
     if(game_manager.startUp()) {
 	log_manager.writeLog("Error starting game manager!");
+	log_manager.writeLog("Error starting game manager!");
 	game_manager.shutDown();
 	return 0;
     }
