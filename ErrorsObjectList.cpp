@@ -118,7 +118,7 @@ void ErrorsObjectList::loadContents()
     
     df::LogManager& log = df::LogManager::getInstance();
     std::string line;
-    std::string filename = "data/data.txt";
+    std::string filename = "../data/data.txt";
     std::ifstream myfile(filename);
     int line_num = 0;
     int curr;

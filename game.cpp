@@ -46,11 +46,11 @@ int main(int argc, char* argv[])
 void loadResources(void)
 {
     df::ResourceManager& resource_manager = df::ResourceManager::getInstance();
-	resource_manager.loadSprite("sprites/explosion-spr.txt", "explosion");
-	resource_manager.loadSound("sounds/errors-sound.wav", "errors");
-	resource_manager.loadSound("sounds/fire.wav", "fire");
+	resource_manager.loadSprite("../sprites/explosion-spr.txt", "explosion");
+	resource_manager.loadSound("../sounds/errors-sound.wav", "errors");
+	resource_manager.loadSound("../sounds/fire.wav", "fire");
 	//normal theme
-	resource_manager.loadMusic("sounds/spectre.wav", "spectre");
+	resource_manager.loadMusic("../sounds/spectre.wav", "spectre");
 	//extreme theme
 	//resource_manager.loadMusic("sounds/Miiro.mp3", "miiro");
 }
