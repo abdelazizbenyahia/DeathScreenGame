@@ -10,6 +10,7 @@
 #include "ViewObject.h"
 // Game includes.
 #include "ErrorsObjectList.h"
+#include "Hero.h"
 // Function prototypes.
 void loadResources(void);
 void populateWorld(void);
@@ -22,7 +23,7 @@ int main(int argc, char* argv[])
     df::GameManager& game_manager = df::GameManager::getInstance();
     if(game_manager.startUp()) {
 	log_manager.writeLog("Error starting game manager!");
-	log_manager.writeLog("Error starting game manager!");
+
 	game_manager.shutDown();
 	return 0;
     }
@@ -48,6 +49,7 @@ void loadResources(void)
 {
     df::ResourceManager& resource_manager = df::ResourceManager::getInstance();
 	resource_manager.loadSprite("../sprites/explosion-spr.txt", "explosion");
+	resource_manager.loadSprite("../sprites/ship-spr.txt", "ship");
 	resource_manager.loadSound("../sounds/errors-sound.wav", "errors");
 	resource_manager.loadSound("../sounds/fire.wav", "fire");
 	//normal theme
@@ -59,6 +61,7 @@ void loadResources(void)
 // Populate world with some objects.
 void populateWorld(void)
 {
+	new Hero;
 	new ErrorsObjectList;
 	df::ViewObject * v_o = new df::ViewObject();
 	v_o->setViewString("Points");
