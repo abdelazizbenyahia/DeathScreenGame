@@ -3,7 +3,7 @@
 #include "ResourceManager.h"
 #include "WorldManager.h"
 #include "GameOver.h"
-
+#include "GameManager.h"
 
 void GameOver::step() {
 	time_to_live--;
@@ -40,17 +40,10 @@ GameOver::GameOver() {
 
 }
 GameOver::~GameOver() {
-  df::WorldManager &world_manager = df::WorldManager::getInstance();
-
-  // Remove Saucers and ViewObjects, re-activate GameStart.
-  df::ObjectList object_list = world_manager.getAllObjects(true);
-  df::ObjectListIterator i(&object_list);
-  for (i.first(); !i.isDone(); i.next()) {
-    df::Object *p_o = i.currentObject();
-    if (p_o -> getType() == "ErrorsObject" || p_o -> getType() == "ViewObject")
-      world_manager.markForDelete(p_o);
-	
-  }
+  df::GameManager& game = df::GameManager::getInstance();
+  game.setGameOver();
+  
+  
 }
 
 int GameOver::eventHandler(const df::Event *p_e) {
