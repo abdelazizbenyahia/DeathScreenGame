@@ -1,0 +1,17 @@
+frames 2
+width 11
+height 5
+color red 
+  (~)(!)   
+ (@)(%)(&) 
+ _!__!__!_ 
+\KEYABOARD/
+~~~~~~~~~~~
+end
+  (X)(#)   
+ (+)(*)(H) 
+ _!__!__!_ 
+\KEYABOARD/
+~~~~~~~~~~~
+end
+eof

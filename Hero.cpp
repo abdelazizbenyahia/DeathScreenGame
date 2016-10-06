@@ -3,6 +3,7 @@
 //
 
 // Engine includes.
+
 #include "EventMouse.h"
 #include "EventStep.h"
 #include "EventView.h"
@@ -30,22 +31,21 @@ Hero::Hero()
 	log_manager.writeLog("Hero::Hero(): Warning! Sprite '%s' not found", "ship");
     } else {
 	setSprite(p_temp_sprite);
-	setSpriteSlowdown(3); // 1/3 speed animation.
+	setSpriteSlowdown(2); // 1/3 speed animation.
 	                      //    setTransparency();	   // Transparent sprite.
     }
-
+direction=true;
     // Player controls hero, so register for input events.
-    registerInterest(df::KEYBOARD_EVENT);
-    registerInterest(df::MOUSE_EVENT);
-
+  
+registerInterest(df::STEP_EVENT);
     
-
+registerInterest(df::COLLISION_EVENT);
     // Set object type.
     setType("Hero");
 
     // Set starting location.
     df::WorldManager& world_manager = df::WorldManager::getInstance();
-    df::Vector p(world_manager.getBoundary().getHorizontal() / 2, world_manager.getBoundary().getVertical() - 7);
+    df::Vector p(world_manager.getBoundary().getHorizontal() / 2, world_manager.getBoundary().getVertical() -2);
     setPos(p);
     if(world_manager.setViewFollowing(this) == -1) {
 	log_manager.writeLog("cannot");
@@ -80,19 +80,17 @@ Hero::~Hero()
 int Hero::eventHandler(const df::Event* p_e)
 {
 
-    if(p_e->getType() == df::KEYBOARD_EVENT) {
-	const df::EventKeyboard* p_keyboard_event = dynamic_cast<const df::EventKeyboard*>(p_e);
-	kbd(p_keyboard_event);
-	return 1;
-    }
 
 
     if(p_e->getType() == df::STEP_EVENT) {
 	step();
 	return 1;
     }
-
-    // If get here, have ignored this event.
+if (p_e->getType() == df::COLLISION_EVENT) {
+		const df::EventCollision *p_collision_event = dynamic_cast <df::EventCollision const *> (p_e);
+		hit(p_collision_event);
+		return 1;
+	}
     return 0;
 }
 
@@ -103,29 +101,51 @@ void Hero::kbd(const df::EventKeyboard* p_keyboard_event)
 }
 
 // Move up or down.
-void Hero::move(int dy)
+void Hero::move(int dx)
 {
 
     // See if time to move.
-    if(move_countdown > 0)
-	return;
-    move_countdown = move_slowdown;
 
     // If stays on window, allow move.
-    df::Vector new_pos(getPos().getX(), getPos().getY() + dy);
+    df::Vector new_pos(getPos().getX()+dx, getPos().getY() );
     df::WorldManager& world_manager = df::WorldManager::getInstance();
-    if((new_pos.getY() > 3) && (new_pos.getY() < world_manager.getBoundary().getVertical() - 1)) {
+    if((new_pos.getX() > 3) && (new_pos.getX() < world_manager.getBoundary().getHorizontal() - 1)) {
 	world_manager.moveObject(this, new_pos);
 	}
 }
 
 void Hero::step()
 {
+    df::LogManager& log_manager = df::LogManager::getInstance();
+  if (direction==true) {
 
-    // Move countdown.
-    move_countdown--;
-    if(move_countdown < 0)
-	move_countdown = 0;
+			move(+1);
+		if (this->getPos().getX()>74)
+			direction=false;
+			 	log_manager.writeLog("new position = ( %f %f )",this->getPos().getX(),this->getPos().getY());
+		}
+		else if (direction==false) {
+			move(-1);
+				if (this->getPos().getX()<4.1f)
+				direction=true;
+				 
+		}
 
 }
 
+void Hero::hit(const df::EventCollision *p_collision_event) {
+
+	
+		if (((p_collision_event->getObject1()->getType()) == "ErrorsObject") ||
+			((p_collision_event->getObject2()->getType()) == "ErrorsObject")) {
+			df::WorldManager &world_manager = df::WorldManager::getInstance();
+			world_manager.markForDelete(p_collision_event->getObject1());
+			world_manager.markForDelete(p_collision_event->getObject2());
+		}
+			if (((p_collision_event->getObject1()->getType()) == "ErrorsObjectList") ||
+			((p_collision_event->getObject2()->getType()) == "ErrorsObjectList")) {
+			df::WorldManager &world_manager = df::WorldManager::getInstance();
+			world_manager.markForDelete(p_collision_event->getObject1());
+			world_manager.markForDelete(p_collision_event->getObject2());
+		}
+	}
