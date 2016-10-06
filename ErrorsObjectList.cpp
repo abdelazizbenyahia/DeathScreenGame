@@ -10,7 +10,7 @@ char dfKeyboardToChar(df::Keyboard::Key k);
 
 ErrorsObjectList::ErrorsObjectList()
 {
-    highest_gap = 120;
+    highest_gap = 240;
     accelerate = 1;
     reduction = 0;
     max_height = LOWEST_HEIGHT;
@@ -77,8 +77,12 @@ void ErrorsObjectList::step(int step_number)
     int cap = highest_gap * accelerate - reduction;
     if(step_number % cap == 0) {
 	new ErrorsObject(this, contents.size());
-	
     }
+	if (step_number % 600 == 0) {
+		if (accelerate > 0.1)
+		accelerate -= 0.1;
+		
+	}
 }
 
 void ErrorsObjectList::setAccelerate(float n_acce)

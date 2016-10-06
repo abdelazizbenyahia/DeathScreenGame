@@ -31,7 +31,9 @@ ErrorsObject::ErrorsObject(ErrorsObjectList* n_list, int max_num)
     color[0] = df::WHITE;
     color[1] = df::Color::MAGENTA;
     color[2] = df::RED;
-	setYVelocity(0.1);
+	float vel = (rand() % 10 + 1) / 10.0;
+	setYVelocity(0.1 * vel);
+	setSolidness(df::SOFT);
     moveToStart();
     
 }
