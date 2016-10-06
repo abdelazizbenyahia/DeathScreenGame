@@ -7,6 +7,7 @@ class ErrorsObjectList;
 const std::string HARDNESS_TOKEN = "hardness";
 const std::string MAX_NUM_TOKEN = "numbers";
 const std::string END_TOKEN = "end";
+const std::string ERRORS_OBJECT = "ErrorsObject";
 class ErrorsObject: public df::Object
 {
 private:

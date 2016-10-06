@@ -35,6 +35,7 @@ ErrorsObject::ErrorsObject(ErrorsObjectList* n_list, int max_num)
 	setYVelocity(0.1 * vel);
 	setSolidness(df::SOFT);
     moveToStart();
+	setType(ERRORS_OBJECT);
     
 }
 
