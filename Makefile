@@ -21,10 +21,10 @@ LINKLIB= -ldragonfly-mac64 -lsfml-graphics -lsfml-window -lsfml-system -lsfml-au
 #uncomment this line for li
 #LINKLIB= -ldragonfly -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lrt
 
-LINKDIR= -L./engine/ -L/usr/local/lib # path to dragonfly library
-INCDIR= -I./include/ -I/usr/local/include # path to dragonfly includes
+LINKDIR= -L../engine/ -L/usr/local/lib # path to dragonfly library
+INCDIR= -I../include/ -I/usr/local/include # path to dragonfly includes
 
-GAMESRC=Hero.cpp Explosion.cpp ErrorsObject.cpp ErrorsObjectList.cpp
+GAMESRC=Hero.cpp Explosion.cpp ErrorsObject.cpp ErrorsObjectList.cpp GameOver.cpp
 GAME= game.cpp
 EXECUTABLE= game
 OBJECTS= $(GAMESRC:.cpp=.o)
