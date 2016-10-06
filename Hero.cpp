@@ -3,7 +3,7 @@
 //
 
 // Engine includes.
-
+#include "GameOver.h"
 #include "EventMouse.h"
 #include "EventStep.h"
 #include "EventView.h"
@@ -13,6 +13,7 @@
 #include "WorldManager.h"
 #include "utility.h"
 #include "InputManager.h"
+#include "Sound.h"
 // Game includes.
 #include "Hero.h"
 #include "Explosion.h"
@@ -42,7 +43,7 @@ Hero::Hero()
 
     // Set starting location.
     df::WorldManager& world_manager = df::WorldManager::getInstance();
-    df::Vector p(world_manager.getBoundary().getHorizontal() / 2, world_manager.getBoundary().getVertical() - 2);
+    df::Vector p(world_manager.getBoundary().getHorizontal() / 2, world_manager.getBoundary().getVertical() - 4);
     setPos(p);
     if(world_manager.setViewFollowing(this) == -1) {
 	log_manager.writeLog("cannot");
@@ -55,6 +56,7 @@ Hero::Hero()
 
 Hero::~Hero()
 {
+	GameOver *p_go = new GameOver;
 
     // Make big explosion.
     for(int i = -8; i <= 8; i += 5) {
@@ -112,7 +114,7 @@ void Hero::step()
 	move(+1);
 	if(this->getPos().getX() > 74)
 	    direction = false;
-	log_manager.writeLog("new position = ( %f %f )", this->getPos().getX(), this->getPos().getY());
+	
     } else if(direction == false) {
 	move(-1);
 	if(this->getPos().getX() < 4.1f)
@@ -125,6 +127,8 @@ void Hero::hit(const df::EventCollision* p_collision_event)
 
     if(((p_collision_event->getObject1()->getType()) == "ErrorsObject") ||
         ((p_collision_event->getObject2()->getType()) == "ErrorsObject")) {
+			df::Sound *p_sound = df::ResourceManager::getInstance().getSound("blast");
+		p_sound->play();
 	df::WorldManager& world_manager = df::WorldManager::getInstance();
 	world_manager.markForDelete(p_collision_event->getObject1());
 	world_manager.markForDelete(p_collision_event->getObject2());

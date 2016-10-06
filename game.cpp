@@ -52,6 +52,9 @@ void loadResources(void)
 	resource_manager.loadSprite("../sprites/ship-spr.txt", "ship");
 	resource_manager.loadSound("../sounds/errors-sound.wav", "errors");
 	resource_manager.loadSound("../sounds/fire.wav", "fire");
+		resource_manager.loadSound("../sounds/blast.wav", "blast");
+		resource_manager.loadSound("../sounds/game-over.wav", "game over");
+		resource_manager.loadSprite("../sprites/gameover-spr.txt", "gameover");
 	//normal theme
 	resource_manager.loadMusic("../sounds/spectre.wav", "spectre");
 	//extreme theme
