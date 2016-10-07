@@ -8,6 +8,7 @@
 #include "Pause.h"
 #include "ResourceManager.h"
 #include "ViewObject.h"
+#include "GraphicsManager.h"
 // Game includes.
 #include "ErrorsObjectList.h"
 #include "Hero.h"
@@ -18,7 +19,7 @@ void populateWorld(void);
 int main(int argc, char* argv[])
 {
     df::LogManager& log_manager = df::LogManager::getInstance();
-
+	df::GraphicsManager& graphics = df::GraphicsManager::getInstance();
     // Start up game manager.
     df::GameManager& game_manager = df::GameManager::getInstance();
     if(game_manager.startUp()) {
@@ -27,7 +28,8 @@ int main(int argc, char* argv[])
 	game_manager.shutDown();
 	return 0;
     }
-
+	graphics.setBackgroundColor(sf::Color::Blue);
+	graphics.setBackgroundTextColor(sf::Color::Blue);
     // Set flush of logfile during development (when done, make false).
     log_manager.setFlush(false);
 
