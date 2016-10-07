@@ -38,7 +38,7 @@ const int WINDOW_VERTICAL_PIXELS_DEFAULT = 768;
 const int WINDOW_HORIZONTAL_CHARS_DEFAULT = 80;
 const int WINDOW_VERTICAL_CHARS_DEFAULT = 24;
 const int WINDOW_STYLE_DEFAULT = sf::Style::Titlebar | sf::Style::Close;
-const sf::Color WINDOW_BACKGROUND_COLOR_DEFAULT = sf::Color::White;
+const sf::Color WINDOW_BACKGROUND_COLOR_DEFAULT = sf::Color::Black;
 const std::string WINDOW_TITLE_DEFAULT = "Dragonfly";
 const std::string FONT_FILE_DEFAULT = "df-font.ttf";
 const std::string GRAPHICS_MANAGER = "df::graphics_manager";
@@ -55,6 +55,8 @@ private:
     int window_vertical_pixels;              /// Vertical pixels in window.
     int window_horizontal_chars;             /// Horizontal ASCII spaces in window.
     int window_vertical_chars;               /// Vertical ASCII spaces in window.
+	sf::Color background = WINDOW_BACKGROUND_COLOR_DEFAULT;
+	sf::Color background_text = WINDOW_BACKGROUND_COLOR_DEFAULT;
 
 public:
     /// Get the one and only instance of the GraphicsManager.
@@ -78,7 +80,7 @@ public:
     /// Draw string at screen location (x,y) with color.
     /// Justified LEFT, CENTER or RIGHT.
     /// Return 0 if ok, else -1.
-    int drawString(Vector world_pos, std::string str, Justification just, Color color) const;
+    int drawString(Vector world_pos, std::string str, Justification just, Color color, char transparent = 0) const;
 
     /// Draw single sprite frame at screen location (x,y) with color.
     /// If centered true then center frame at (x,y).
@@ -103,5 +105,17 @@ public:
 
     /// Return pointer to SFML drawing window.
     sf::RenderWindow* getWindow() const;
+	
+	///set background colr
+	void setBackgroundColor(sf::Color c);
+	
+	///get background color
+	sf::Color getBackgroundColor() const;
+	
+	///set background text colr
+	void setBackgroundTextColor(sf::Color c);
+	
+	///get background text color
+	sf::Color getBackgroundTextColor() const;
 };
 }
