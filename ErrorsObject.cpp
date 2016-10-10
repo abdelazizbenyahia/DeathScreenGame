@@ -169,7 +169,7 @@ void ErrorsObject::setMaxNumber(int max_num)
 void ErrorsObject::moveToStart()
 {
     df::WorldManager& world_manager = df::WorldManager::getInstance();
-    int x = world_manager.getBoundary().getHorizontal();
+    int x = world_manager.getView().getHorizontal();
     df::Vector temp_pos;
     temp_pos.setX(rand() % (x - 4) + 4);
     temp_pos.setY(-3);

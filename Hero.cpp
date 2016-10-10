@@ -42,7 +42,7 @@ Hero::Hero()
 
     // Set starting location.
     df::WorldManager& world_manager = df::WorldManager::getInstance();
-    df::Vector p(world_manager.getBoundary().getHorizontal() / 2, world_manager.getBoundary().getVertical() - 4);
+    df::Vector p(world_manager.getView().getHorizontal() / 2, world_manager.getView().getVertical() - 4);
     setPos(p);
     if(world_manager.setViewFollowing(this) == -1) {
 	log_manager.writeLog("cannot");
@@ -100,7 +100,7 @@ void Hero::move(int dx)
     // If stays on window, allow move.
     df::Vector new_pos(getPos().getX() + dx, getPos().getY());
     df::WorldManager& world_manager = df::WorldManager::getInstance();
-    if((new_pos.getX() > 3) && (new_pos.getX() < world_manager.getBoundary().getHorizontal() - 1)) {
+    if((new_pos.getX() > 3) && (new_pos.getX() < world_manager.getView().getHorizontal() - 1)) {
 	world_manager.moveObject(this, new_pos);
     }
 }
