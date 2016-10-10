@@ -17,8 +17,7 @@
 // Game includes.
 #include "Hero.h"
 #include "Explosion.h"
-// Define registerInterest in case engine does not.
-static void registerInterest(std::string s){};
+
 
 Hero::Hero()
 {

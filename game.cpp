@@ -28,8 +28,9 @@ int main(int argc, char* argv[])
 	game_manager.shutDown();
 	return 0;
     }
-	graphics.setBackgroundColor(sf::Color::Blue);
-	graphics.setBackgroundTextColor(sf::Color::Blue);
+	sf::Color blue = sf::Color(7, 61, 147);
+	graphics.setBackgroundColor(blue);
+	graphics.setBackgroundTextColor(blue);
     // Set flush of logfile during development (when done, make false).
     log_manager.setFlush(false);
 

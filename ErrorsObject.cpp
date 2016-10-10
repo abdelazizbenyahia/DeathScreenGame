@@ -28,7 +28,7 @@ ErrorsObject::ErrorsObject(ErrorsObjectList* n_list, int max_num)
     if(r < 10)
 	hardness = 3;
     loadContent();
-    color[0] = df::WHITE;
+    color[0] = df::YELLOW;
     color[1] = df::Color::MAGENTA;
     color[2] = df::RED;
 	float vel = (rand() % 10 + 1) / 10.0;

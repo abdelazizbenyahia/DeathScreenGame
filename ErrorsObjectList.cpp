@@ -194,7 +194,7 @@ char dfKeyboardToChar(df::Keyboard::Key k)
     case df::Keyboard::Key::O:
 	return 'o';
     case df::Keyboard::Key::P:
-	return 'P';
+	return 'p';
     case df::Keyboard::Key::Q:
 	return 'q';
     case df::Keyboard::Key::R:
