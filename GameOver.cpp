@@ -6,7 +6,7 @@
 #include "GameManager.h"
 #include "EventGameOver.h"
 #include "EventKeyboard.h"
-
+#include "GameStart.h"
 void GameOver::step()
 {
 }
@@ -38,12 +38,25 @@ GameOver::GameOver()
     setLocation(df::CENTER_CENTER);
     registerInterest(df::STEP_EVENT);
     df::WorldManager& world = df::WorldManager::getInstance();
-    EventGameOver ego;
-    world.onEvent(&ego);
+   
     registerInterest(df::KEYBOARD_EVENT);
 }
 GameOver::~GameOver()
 {
+	  df::WorldManager &world_manager = df::WorldManager::getInstance();
+
+  // Remove Saucers and ViewObjects, re-activate GameStart.
+  df::ObjectList object_list = world_manager.getAllObjects(true);
+  df::ObjectListIterator i(&object_list);
+  for (i.first(); !i.isDone(); i.next()) {
+    df::Object *p_o = i.currentObject();
+    if (p_o -> getType() == "ERRORS_OBJECT" || p_o -> getType() == "ViewObject")
+      world_manager.markForDelete(p_o);
+	if (p_o->getType() == "GameStart") {
+		p_o->setIsActive(true);
+		dynamic_cast <GameStart *> (p_o)->playOnReturn(); // Resume start music.
+	}
+  }
 }
 
 int GameOver::eventHandler(const df::Event* p_e)
@@ -59,6 +72,7 @@ int GameOver::eventHandler(const df::Event* p_e)
 	if(e->getKey() == df::Keyboard::Key::R && e->getKeyboardAction() == df::EventKeyboardAction::KEY_RELEASED) {
 		return 1;
 	}
+	
     }
     return 0;
 }
