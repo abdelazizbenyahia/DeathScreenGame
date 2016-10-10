@@ -11,6 +11,7 @@
 #include "ViewObject.h"
 #include "GraphicsManager.h"
 // Game includes.
+#include "GameStart.h"
 #include "ErrorsObjectList.h"
 #include "Hero.h"
 // Function prototypes.
@@ -42,7 +43,7 @@ int main(int argc, char* argv[])
 
     // Populate game world with some objects.
     populateWorld();
-
+new df::Pause(df::Keyboard::F10);
     // Run game (this blocks until game loop is over).
     game_manager.run();
 
@@ -60,9 +61,11 @@ void loadResources(void)
     resource_manager.loadSound("../sounds/fire.wav", "fire");
     resource_manager.loadSound("../sounds/blast.wav", "blast");
     resource_manager.loadSound("../sounds/game-over.wav", "game over");
+	resource_manager.loadSprite("../sprites/gamestart-spr.txt", "gamestart");
     resource_manager.loadSprite("../sprites/gameover-spr.txt", "gameover");
     // normal theme
     resource_manager.loadMusic("../sounds/spectre.wav", "spectre");
+	resource_manager.loadMusic("../sounds/start-music.wav", "start music");
     // extreme theme
     // resource_manager.loadMusic("sounds/Miiro.mp3", "miiro");
 }
@@ -70,6 +73,7 @@ void loadResources(void)
 // Populate world with some objects.
 void populateWorld(void)
 {
+	new GameStart();
     new Hero;
     new ErrorsObjectList;
     df::ViewObject* v_o = new df::ViewObject();
