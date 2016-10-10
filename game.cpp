@@ -7,6 +7,7 @@
 #include "LogManager.h"
 #include "Pause.h"
 #include "ResourceManager.h"
+#include "WorldManager.h"
 #include "ViewObject.h"
 #include "GraphicsManager.h"
 // Game includes.
@@ -20,6 +21,8 @@ int main(int argc, char* argv[])
 {
     df::LogManager& log_manager = df::LogManager::getInstance();
 	df::GraphicsManager& graphics = df::GraphicsManager::getInstance();
+	df::WorldManager& world = df::WorldManager::getInstance();
+	world.setView(df::Box(df::Vector(), 50, 24));
     // Start up game manager.
     df::GameManager& game_manager = df::GameManager::getInstance();
     if(game_manager.startUp()) {

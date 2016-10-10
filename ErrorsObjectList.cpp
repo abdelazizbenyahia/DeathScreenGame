@@ -6,6 +6,7 @@
 #include <fstream>
 #include "utility.h"
 #include "ResourceManager.h"
+#include "EventGameOver.h"
 char dfKeyboardToChar(df::Keyboard::Key k);
 
 ErrorsObjectList::ErrorsObjectList()
@@ -18,6 +19,7 @@ ErrorsObjectList::ErrorsObjectList()
     registerInterest(df::KEYBOARD_EVENT);
     setSolidness(df::SPECTRAL);
 	loadContents();
+	registerInterest(GAMEOVER_EVENT);
 	df::ResourceManager& resource = df::ResourceManager::getInstance();
 	df::Music * m = resource.getMusic("spectre");
 	if (m!=NULL) m->play();
@@ -46,9 +48,16 @@ int ErrorsObjectList::eventHandler(const df::Event* p_event)
 	if(p_key->getKeyboardAction() == df::KEY_RELEASED) {
 	    if(max_object != NULL)
 		max_object->removeLetter(dfKeyboardToChar(p_key->getKey()));
+		return 1;
 	}
     }
+	
+	if(p_event->getType() == GAMEOVER_EVENT) {
+		start = !start;
+		return 1;
+    }
 
+	
     return 0;
 }
 
@@ -74,6 +83,7 @@ void ErrorsObjectList::setMaxObject(ErrorsObject* n_object)
 
 void ErrorsObjectList::step(int step_number)
 {
+	if (!start) return;
     int cap = highest_gap * accelerate - reduction;
     if(step_number % cap == 0) {
 	new ErrorsObject(this, contents.size());

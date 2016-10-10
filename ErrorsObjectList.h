@@ -22,7 +22,7 @@ private:
 	///errors content
 	std::vector<std::string> contents;
 	void loadContents();
-	
+	bool start = true;
 	
 public:
 	ErrorsObjectList();

@@ -4,6 +4,7 @@
 #include "fstream"
 #include <cctype>
 #include "Explosion.h"
+#include "EventGameOver.h"
 // game engine
 #include "WorldManager.h"
 #include "GraphicsManager.h"
@@ -36,6 +37,7 @@ ErrorsObject::ErrorsObject(ErrorsObjectList* n_list, int max_num)
 	setSolidness(df::SOFT);
     moveToStart();
 	setType(ERRORS_OBJECT);
+	registerInterest(GAMEOVER_EVENT);
     
 }
 
@@ -58,7 +60,7 @@ ErrorsObject::~ErrorsObject()
 
 int ErrorsObject::eventHandler(const df::Event* p_event)
 {
-    if(p_event->getType() == df::OUT_EVENT) {
+    if(p_event->getType() == df::OUT_EVENT || p_event->getType() == GAMEOVER_EVENT ) {
 	df::WorldManager& world = df::WorldManager::getInstance();
 	world.markForDelete(this);
 	
