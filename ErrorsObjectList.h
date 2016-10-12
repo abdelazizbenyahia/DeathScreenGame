@@ -4,6 +4,7 @@
 #include "ObjectList.h"
 #include "ErrorsObject.h"
 #include <vector>
+const std::string ELIST = "elist";
 const int LOWEST_HEIGHT = -300;
 class ErrorsObject;
 class ErrorsObjectList : public df::Object

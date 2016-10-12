@@ -14,7 +14,7 @@
 #include "Object.h"
 
 namespace df {
-
+  const std::string VIEW_OBJECT = "df::VIEW_OBJECT";
 /// Count of number of view object modified attribute categories.
 const int VATTR_COUNT = 6;
 

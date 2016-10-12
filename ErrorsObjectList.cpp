@@ -11,6 +11,7 @@ char dfKeyboardToChar(df::Keyboard::Key k);
 
 ErrorsObjectList::ErrorsObjectList()
 {
+	setType(ELIST);
     highest_gap = 240;
     accelerate = 1;
     reduction = 0;

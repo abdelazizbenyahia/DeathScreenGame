@@ -1,5 +1,5 @@
 frames 2
-width 70
+width 68
 height 9
 color yellow
     _____            __  __       _____                             
@@ -9,17 +9,17 @@ color yellow
 /____/ \___/\__,_/\__/_/ /_/   /____/\___/_/    \___/\___/_/ /_/    
                                                                     
      Controls: Type Error messages by keyboard to kill them!        
-                                                                      
-                    Press 'p' to play, 'q' to quit                    
+                                                                    
+                    Press 'p' to play, 'q' to quit                  
 end
        _____            __  __       _____                          
       /__  /___  ____  / /_/ /_     / ___/__________ ___  ___  ____ 
      // / // _ \/ __ `/ __/ __ \    \__ \/ ___/ ___// _ \/ _ \/ __ \
     //_/ //  __/ / /_/ /_/ / / /   ___/ / /__/ /   /  __/  __/ / / /
    /____/ \___/\__,_/\__/_/ /_/   /____/\___/_/    \___/\___/_/ /_/ 
-                                                                       
+                                                                    
      Controls: Type Error messages by keyboard to kill them!        
-                                                                      
-                    Press 'p' to play, 'q' to quit                             
+                                                                    
+                    Press 'p' to play, 'q' to quit                  
 end
 eof

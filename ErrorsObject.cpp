@@ -174,7 +174,10 @@ void ErrorsObject::moveToStart()
     temp_pos.setX(rand() % (x - 4) + 4);
     temp_pos.setY(-3);
 	if (temp_pos.getX() + getBox().getHorizontal() / 2 > x){
-		temp_pos.setX(x - getBox().getHorizontal() - 1);
+		temp_pos.setX(x - getBox().getHorizontal()/2 - 1);
+	}
+	if (temp_pos.getX() - getBox().getHorizontal() / 2 < 0){
+		temp_pos.setX(getBox().getHorizontal()/2);
 	}
     df::ObjectList collision_list = world_manager.isCollision(this, temp_pos);
     while(!collision_list.isEmpty()) {
